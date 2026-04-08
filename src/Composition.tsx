@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AbsoluteFill,
   Sequence,
@@ -10,18 +11,17 @@ import {
 } from "remotion";
 import { Video } from "@remotion/media";
 
-const TopTitle: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+const FPS = 30;
 
-  const opacity = interpolate(frame, [0, 0.3 * fps], [0, 1], {
+function TopTitle() {
+  const frame = useCurrentFrame();
+  const opacity = interpolate(frame, [0, 9], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const y = interpolate(frame, [0, 0.3 * fps], [-30, 0], {
+  const y = interpolate(frame, [0, 9], [-30, 0], {
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.quad),
   });
-
   return (
     <div
       style={{
@@ -44,20 +44,17 @@ const TopTitle: React.FC = () => {
           letterSpacing: 2,
         }}
       >
-        BLACK CORAL BURN 🔥
+        {"BLACK CORAL BURN \uD83D\uDD25"}
       </span>
     </div>
   );
-};
+}
 
-const BottomThirdText: React.FC<{ text: string }> = ({ text }) => {
+function BottomThirdText({ text }: { text: string }) {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const opacity = interpolate(frame, [0, 0.4 * fps], [0, 1], {
+  const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: "clamp",
   });
-
   return (
     <div
       style={{
@@ -82,25 +79,22 @@ const BottomThirdText: React.FC<{ text: string }> = ({ text }) => {
       </span>
     </div>
   );
-};
+}
 
-const FlashText: React.FC<{ text: string }> = ({ text }) => {
+function FlashText({ text }: { text: string }) {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
-
   const enterScale = spring({
     frame,
     fps,
     config: { damping: 20, stiffness: 200 },
   });
-
   const exitOpacity = interpolate(
     frame,
-    [durationInFrames - 0.3 * fps, durationInFrames],
+    [durationInFrames - 9, durationInFrames],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
-
   return (
     <AbsoluteFill
       style={{
@@ -115,7 +109,8 @@ const FlashText: React.FC<{ text: string }> = ({ text }) => {
           color: "white",
           fontSize: 72,
           fontWeight: 800,
-          textShadow: "0 0 40px rgba(255,100,0,0.6), 0 4px 20px rgba(0,0,0,0.7)",
+          textShadow:
+            "0 0 40px rgba(255,100,0,0.6), 0 4px 20px rgba(0,0,0,0.7)",
           transform: `scale(${enterScale})`,
           letterSpacing: 3,
         }}
@@ -124,22 +119,18 @@ const FlashText: React.FC<{ text: string }> = ({ text }) => {
       </span>
     </AbsoluteFill>
   );
-};
+}
 
-const EndCard: React.FC = () => {
+function EndCard() {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const opacity = interpolate(frame, [0, 0.5 * fps], [0, 1], {
+  const opacity = interpolate(frame, [0, 15], [0, 1], {
     extrapolateRight: "clamp",
   });
-
-  const textY = interpolate(frame, [0.3 * fps, 0.8 * fps], [30, 0], {
+  const textY = interpolate(frame, [9, 24], [30, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.quad),
   });
-
   return (
     <AbsoluteFill
       style={{
@@ -160,7 +151,7 @@ const EndCard: React.FC = () => {
           letterSpacing: 2,
         }}
       >
-        BLACK CORAL BURN 🔥
+        {"BLACK CORAL BURN \uD83D\uDD25"}
       </span>
       <span
         style={{
@@ -170,18 +161,15 @@ const EndCard: React.FC = () => {
           transform: `translateY(${textY}px)`,
         }}
       >
-        Consíguelo ya — link de abajo
+        {"Cons\u00EDguelo ya \u2014 link de abajo"}
       </span>
     </AbsoluteFill>
   );
-};
+}
 
 export const BlackCoralBurn: React.FC = () => {
-  const { fps } = useVideoConfig();
-
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      {/* Video layer */}
       <AbsoluteFill>
         <Video
           src={staticFile("burn.mp4")}
@@ -189,45 +177,44 @@ export const BlackCoralBurn: React.FC = () => {
         />
       </AbsoluteFill>
 
-      {/* Overlay layer */}
       <AbsoluteFill>
-        {/* [0-3s] Title — top center */}
-        <Sequence from={0} durationInFrames={3 * fps} layout="none">
+        {/* [0-3s] Title */}
+        <Sequence from={0} durationInFrames={3 * FPS} layout="none">
           <TopTitle />
         </Sequence>
 
-        {/* [3-8s] Subtitle — bottom third */}
-        <Sequence from={3 * fps} durationInFrames={5 * fps} layout="none">
+        {/* [3-8s] Subtitle */}
+        <Sequence from={3 * FPS} durationInFrames={5 * FPS} layout="none">
           <BottomThirdText text="4 semanas. Resultados reales." />
         </Sequence>
 
-        {/* [15-18s] Flash — center */}
-        <Sequence from={15 * fps} durationInFrames={3 * fps} premountFor={fps}>
-          <FlashText text="TERMOGÉNESIS 🔥" />
+        {/* [15-18s] Flash */}
+        <Sequence from={15 * FPS} durationInFrames={3 * FPS}>
+          <FlashText text={"TERMOG\u00C9NESIS \uD83D\uDD25"} />
         </Sequence>
 
-        {/* [20-23s] Flash — center */}
-        <Sequence from={20 * fps} durationInFrames={3 * fps} premountFor={fps}>
-          <FlashText text="ENFOQUE MENTAL ⚡" />
+        {/* [20-23s] Flash */}
+        <Sequence from={20 * FPS} durationInFrames={3 * FPS}>
+          <FlashText text={"ENFOQUE MENTAL \u26A1"} />
         </Sequence>
 
-        {/* [25-28s] Flash — center */}
-        <Sequence from={25 * fps} durationInFrames={3 * fps} premountFor={fps}>
-          <FlashText text="ENERGÍA PROLONGADA 💪" />
+        {/* [25-28s] Flash */}
+        <Sequence from={25 * FPS} durationInFrames={3 * FPS}>
+          <FlashText text={"ENERG\u00CDA PROLONGADA \uD83D\uDCAA"} />
         </Sequence>
 
-        {/* [30-35s] Testimonial — bottom third */}
-        <Sequence from={30 * fps} durationInFrames={5 * fps} layout="none">
+        {/* [30-35s] Testimonial */}
+        <Sequence from={30 * FPS} durationInFrames={5 * FPS} layout="none">
           <BottomThirdText text="Mi ropa ajusta diferente." />
         </Sequence>
 
-        {/* [45-50s] Testimonial — bottom third */}
-        <Sequence from={45 * fps} durationInFrames={5 * fps} layout="none">
+        {/* [45-50s] Testimonial */}
+        <Sequence from={45 * FPS} durationInFrames={5 * FPS} layout="none">
           <BottomThirdText text="Ya es parte de mi rutina." />
         </Sequence>
 
-        {/* [55-60s] End card — full screen */}
-        <Sequence from={55 * fps} durationInFrames={5 * fps} premountFor={fps}>
+        {/* [55-60s] End card */}
+        <Sequence from={55 * FPS} durationInFrames={5 * FPS}>
           <EndCard />
         </Sequence>
       </AbsoluteFill>
