@@ -181,7 +181,7 @@ export const MyComposition: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      <Video src={staticFile("burn.mp4")} />
+      <Video src={staticFile("HOOK__No_te_voy_-_Helen.mp4")} />
 
       {/* [0-3s] Title — top center */}
       <Sequence from={0} durationInFrames={3 * fps} premountFor={fps}>
