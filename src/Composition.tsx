@@ -176,7 +176,7 @@ const EndCard: React.FC = () => {
   );
 };
 
-export const MyComposition: React.FC = () => {
+export const BlackCoralBurn: React.FC = () => {
   const { fps } = useVideoConfig();
 
   return (
