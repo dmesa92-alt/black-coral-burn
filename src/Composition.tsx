@@ -181,47 +181,56 @@ export const MyComposition: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      <Video src={staticFile("HOOK__No_te_voy_-_Helen.mp4")} />
+      {/* Video layer */}
+      <AbsoluteFill>
+        <Video
+          src={staticFile("HOOK__No_te_voy_-_Helen.mp4")}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </AbsoluteFill>
 
-      {/* [0-3s] Title — top center */}
-      <Sequence from={0} durationInFrames={3 * fps} premountFor={fps}>
-        <TopTitle />
-      </Sequence>
+      {/* Overlay layer */}
+      <AbsoluteFill>
+        {/* [0-3s] Title — top center */}
+        <Sequence from={0} durationInFrames={3 * fps} layout="none">
+          <TopTitle />
+        </Sequence>
 
-      {/* [3-8s] Subtitle — bottom third */}
-      <Sequence from={3 * fps} durationInFrames={5 * fps} premountFor={fps}>
-        <BottomThirdText text="4 semanas. Resultados reales." />
-      </Sequence>
+        {/* [3-8s] Subtitle — bottom third */}
+        <Sequence from={3 * fps} durationInFrames={5 * fps} layout="none">
+          <BottomThirdText text="4 semanas. Resultados reales." />
+        </Sequence>
 
-      {/* [15-18s] Flash — center */}
-      <Sequence from={15 * fps} durationInFrames={3 * fps} premountFor={fps}>
-        <FlashText text="TERMOGÉNESIS 🔥" />
-      </Sequence>
+        {/* [15-18s] Flash — center */}
+        <Sequence from={15 * fps} durationInFrames={3 * fps} premountFor={fps}>
+          <FlashText text="TERMOGÉNESIS 🔥" />
+        </Sequence>
 
-      {/* [20-23s] Flash — center */}
-      <Sequence from={20 * fps} durationInFrames={3 * fps} premountFor={fps}>
-        <FlashText text="ENFOQUE MENTAL ⚡" />
-      </Sequence>
+        {/* [20-23s] Flash — center */}
+        <Sequence from={20 * fps} durationInFrames={3 * fps} premountFor={fps}>
+          <FlashText text="ENFOQUE MENTAL ⚡" />
+        </Sequence>
 
-      {/* [25-28s] Flash — center */}
-      <Sequence from={25 * fps} durationInFrames={3 * fps} premountFor={fps}>
-        <FlashText text="ENERGÍA PROLONGADA 💪" />
-      </Sequence>
+        {/* [25-28s] Flash — center */}
+        <Sequence from={25 * fps} durationInFrames={3 * fps} premountFor={fps}>
+          <FlashText text="ENERGÍA PROLONGADA 💪" />
+        </Sequence>
 
-      {/* [30-35s] Testimonial — bottom third */}
-      <Sequence from={30 * fps} durationInFrames={5 * fps} premountFor={fps}>
-        <BottomThirdText text="Mi ropa ajusta diferente." />
-      </Sequence>
+        {/* [30-35s] Testimonial — bottom third */}
+        <Sequence from={30 * fps} durationInFrames={5 * fps} layout="none">
+          <BottomThirdText text="Mi ropa ajusta diferente." />
+        </Sequence>
 
-      {/* [45-50s] Testimonial — bottom third */}
-      <Sequence from={45 * fps} durationInFrames={5 * fps} premountFor={fps}>
-        <BottomThirdText text="Ya es parte de mi rutina." />
-      </Sequence>
+        {/* [45-50s] Testimonial — bottom third */}
+        <Sequence from={45 * fps} durationInFrames={5 * fps} layout="none">
+          <BottomThirdText text="Ya es parte de mi rutina." />
+        </Sequence>
 
-      {/* [55-60s] End card — full screen */}
-      <Sequence from={55 * fps} durationInFrames={5 * fps} premountFor={fps}>
-        <EndCard />
-      </Sequence>
+        {/* [55-60s] End card — full screen */}
+        <Sequence from={55 * fps} durationInFrames={5 * fps} premountFor={fps}>
+          <EndCard />
+        </Sequence>
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
