@@ -184,7 +184,7 @@ export const MyComposition: React.FC = () => {
       {/* Video layer */}
       <AbsoluteFill>
         <Video
-          src={staticFile("HOOK__No_te_voy_-_Helen.mp4")}
+          src={staticFile("burn.mp4")}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </AbsoluteFill>
