@@ -1,0 +1,91 @@
+{
+  "inputVideoPath": "./public/burn.mp4",
+  "outputPath": "./output/burn-with-overlays.mp4",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationInSeconds": 60,
+  "overlays": [
+    {
+      "text": "BLACK CORAL BURN \uD83D\uDD25",
+      "startSeconds": 0,
+      "endSeconds": 3,
+      "position": "top-center",
+      "animation": "slide-down",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "color": "white"
+    },
+    {
+      "text": "4 semanas. Resultados reales.",
+      "startSeconds": 3,
+      "endSeconds": 8,
+      "position": "bottom-third",
+      "animation": "fade-in",
+      "fontSize": 48,
+      "fontWeight": 600,
+      "color": "white"
+    },
+    {
+      "text": "TERMOG\u00c9NESIS \uD83D\uDD25",
+      "startSeconds": 15,
+      "endSeconds": 18,
+      "position": "center",
+      "animation": "flash",
+      "fontSize": 72,
+      "fontWeight": 800,
+      "color": "white"
+    },
+    {
+      "text": "ENFOQUE MENTAL \u26A1",
+      "startSeconds": 20,
+      "endSeconds": 23,
+      "position": "center",
+      "animation": "flash",
+      "fontSize": 72,
+      "fontWeight": 800,
+      "color": "white"
+    },
+    {
+      "text": "ENERG\u00cdA PROLONGADA \uD83D\uDCAA",
+      "startSeconds": 25,
+      "endSeconds": 28,
+      "position": "center",
+      "animation": "flash",
+      "fontSize": 72,
+      "fontWeight": 800,
+      "color": "white"
+    },
+    {
+      "text": "Mi ropa ajusta diferente.",
+      "startSeconds": 30,
+      "endSeconds": 35,
+      "position": "bottom-third",
+      "animation": "fade-in",
+      "fontSize": 48,
+      "fontWeight": 600,
+      "color": "white"
+    },
+    {
+      "text": "Ya es parte de mi rutina.",
+      "startSeconds": 45,
+      "endSeconds": 50,
+      "position": "bottom-third",
+      "animation": "fade-in",
+      "fontSize": 48,
+      "fontWeight": 600,
+      "color": "white"
+    },
+    {
+      "text": "Cons\u00edguelo ya \u2014 link de abajo",
+      "startSeconds": 55,
+      "endSeconds": 60,
+      "position": "center",
+      "animation": "end-card",
+      "fontSize": 40,
+      "fontWeight": 600,
+      "color": "#ff9500",
+      "backgroundColor": "black"
+    }
+  ]
+}
